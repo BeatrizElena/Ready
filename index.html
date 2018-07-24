@@ -12,6 +12,132 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>An App for Interpreters</h1>
+      <nav class="main-nav navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <h1>Be Ready!</h1>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown" style="display: none">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other options
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button type="button" id="changePass" class="btn btn-info btn-sm" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
+                  </li>
+                  <li>
+
+                    <form class="border" id="sign-out">
+                        <button id="sign-out-btn" class="btn btn-info btn-sm">Sign Out</button>
+                    </form>
+
+                  </li>
+                  <!-- <li>
+                      <form id="game-show" class="border">
+                          <fieldset>
+                            <legend>Get One Game</legend>
+                              <input type="text" name="game[id]" placeholder="Enter Game ID">
+                              <input type="submit">
+                          </fieldset>
+                          </form>
+                  </li> -->
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- end /.container-fluid -->
+      </nav>
+
+      <div class="initial-view">
+        <h6>Sign In to edit session information</h6>
+        <!-- form#sign-up.border  -->
+        <form class="border" id="sign-up">
+          <fieldset>
+            <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+        <!-- form#sign-up.border  -->
+        <form class="border" id="sign-in">
+          <fieldset>
+            <legend>Sign in</legend>
+            <input type="text" name="credentials[email]" id="user-email" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign in">
+          </fieldset>
+        </form>
+      </div>
+
+      <header class="main-head">
+        <p class="color-white" id="message"></p>
+        <p class="color-white" id="message2"></p>
+      </header>
+
+      <div class="wrapper">
+        <div id="session-options" class="col-md-4" style="display: none">
+          <ul>
+            <li>
+              <a id="session-create" href="#">Create New Session</a>
+            </li>
+            <li>
+              <a id="session-reset" href="#">Reset Session</a>
+            </li>
+            <!-- <li><a id="show-games" href="#">Show games</a></li> -->
+          </ul>
+          <br />
+          <br />
+
+        </div>
+        <div id="session-container" class="col-md-8" style="display: none">
+          <div class="session">
+
+          </div>
+        </div>
+
+        <div id=""></div>
+
+        <div>
+
+
+          <!-- Create  the modals for changing password->
+          <!-- Change Password Modal -->
+          <div class="modal fade" id="changePwdModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                  <!-- form#change-pwd.border  -->
+                  <form class="border" id="change-password">
+                    <fieldset>
+                      <legend>Change Password</legend>
+                      <input type="password" name="passwords[old]" placeholder="Old-Password">
+                      <input type="password" name="passwords[new]" placeholder="New-Password">
+                      <input type="submit" value="Change Password">
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change Password Modal ends here-->
+        </div>
+      </div>
+      <!-- wrapper div ends here -->
     </body>
 </html>
