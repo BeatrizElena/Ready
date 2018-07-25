@@ -1,104 +1,43 @@
 'use strict'
 
 const store = require('../store')
-const logic = require('../logic')
 
-const signUpSuccess = function (data) {
-  $('#message').text('Signed up successfully. Please sign in.')
-  $('#message').css('color', 'white')
-  $("#sign-up").hide()
-  logic.resetMessage()
-  console.log(`signUpSuccess ran. Data is: ${data}`)
+const onSuccess = function (data) {
+  console.log('data is ', data)
+  if (!data) {
+    console.warn('Either you deleted something, or something went wrong.')
+  } else if (data.doctor) {
+    console.log(data.doctor)
+  } else {
+    console.log(data.doctors)
+    store.doctors = data.doctors
+    console.log(store)
+  }
 }
 
-const signUpFailure = function (error) {
-  $('#message').text('Error on Sign-up')
-  $('#message').css('background-color', 'red')
-  logic.resetMessage()
-  console.log(`signUpFailure ran. Error is: ${error}`)
+const onError = function (response) {
+  console.error(response)
 }
 
-const signInSuccess = function (data) {
-  $('#message').text('Signed in successfully')
-  $('#message').css('color', 'white')
-  // console.log(`signInSuccess ran. Data is: ${data}`)
-  store.user = data.user
-  $('.wrapper').show()
-  $('#session-options').fadeIn()
-  $('.dropdown').fadeIn()
-  logic.resetSignInMessage()
-  logic.resetMessage()
-  // console.log('signInSuccess ran. store.user is: ')
-  // console.log(store.user)
+const onDeleteSuccess = function () {
+  console.log('Doctor was successfully deleted.')
 }
 
-const signInFailure = function (error) {
-  $('#message').text('Error on Sign-In')
-  $('#message').css('background-color', 'red')
-  logic.resetMessage()
-  console.log(`signInFailure ran. Error is: `)
-  console.log(error)
+const onUpdateSuccess = function () {
+  console.log('You successfully updated the doctor!')
+  $('#content').html('')
 }
 
-const onShowSuccess = function (data) {
-  console.log(data.session)
-  const sessionHTML = (`
-    <h6>Dr. ${data.session.doctor_id.first_name}, ${data.session.doctor_id.last_name}, ${data.session.doctor_id.clinic_affiliation, ${data.session.doctor_id.phone_number},},</h6>
-    <br>
-  `)
-
-  $('#content').html(sessionHTML)
+const onCreateSuccess = function () {
+  console.log('You successfully created a doctor!')
+  $('#content').html('You created a new doctor profile!')
+  $('#content').css('background-color', 'green')
 }
-
-//
-// const signOutSuccess = function (data) {
-//   $('#message').text('Signed out successfully')
-//   $('#message').css('color', 'white')
-//   $('.wrapper').hide()
-//   $('.dropdown').empty()
-//   $('#user-email').text('')
-//   store.user = null
-//   $('.initial-view').fadeIn()
-//   $("input[type=text], input[type=password], textarea").val("")
-//   console.log(`signOutSuccess ran.`)
-// }
-//
-// const changePasswordSuccess = function (data) {
-//   $('#message').text('Changed password successfully')
-//   $('#message').css('color', 'white')
-//   $('#changePwdModal, .modal-backdrop').hide(),
-//     $('#message').fadeIn()
-//   logic.resetMessage()
-//   // console.log(`changePasswordSuccess ran.`)
-// }
-//
-
-//
-
-//
-// const changePasswordFailure = function (error) {
-//   $('#message').text('Error changing password')
-//   $('#message').css('background-color', 'red')
-//   logic.resetMessage()
-//   // console.log(`changePasswordFailure ran. Error is: `)
-//   // console.log(error)
-// }
-//
-// const signOutFailure = function (error) {
-//   $('#message').text('Error on Sign-out')
-//   $('#message').css('background-color', 'red')
-//   logic.resetMessage()
-//   // console.log(`signOutFailure ran. Error is: `)
-//   // console.log(error)
-// }
 
 module.exports = {
-  signUpSuccess,
-  signUpFailure,
-  signInSuccess,
-  signInFailure
-  // signOutSuccess,
-  // changePasswordSuccess,
-  // changePasswordFailure,
-  // signOutFailure
+  onSuccess,
+  onError,
+  onDeleteSuccess,
+  onUpdateSuccess,
+  onCreateSuccess
 }

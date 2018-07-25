@@ -3,104 +3,94 @@
 const config = require('../config')
 const store = require('../store')
 
-// get game
-const create = function () {
-  // console.log('data: ', data)
-
-  let data = {
-    "session": {
-      "notes": string
-      // "doctor_id" would have the fields from the doctors' table?
-    }
-  }
-
+const indexDoctors = function () {
   return $.ajax({
-    url: config.apiUrl + '/sessions',
-    method: 'POST',
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: JSON.stringify(data)
-  });
-}
-
-const show = function (data) {
-  return $.ajax({
-    url: config.apiUrl + '/sessions/' + data.doctor.id,
+    url: config.apiUrl + '/doctors',
     method: 'GET'
   })
 }
 
+const indexSessions = function () {
+  return $.ajax({
+    // debugger
+    url: config.apiUrl + '/sessions/'
+  });
+}
 
+const showDoctor = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/doctors/' + id,
+    method: 'GET'
+  })
+}
 
+const destroyDoctors = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/doctors/' + id,
+    method: 'DELETE'
+  })
+}
 
+const updateDoctor = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/doctors/' + data.doctor.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
-// const index = function () {
-//   return $.ajax({
-//     url: config.apiUrl + '/games?over=true',
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
-// const getGameById = function (id) {
-//   return $.ajax({
-//     url: config.apiUrl + '/games/' + id,
-//     method: 'GET',
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   });
-// }
-// const showGames = function (over) {
-//
-//   let url = (over === false) ? config.apiUrl + '/games?over=false' : config.apiUrl + '/games?over=true';
-//
-//   return $.ajax({
-//     url: url,
-//     method: 'GET',
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   });
-// }
-//
-// const update = function (dataGame, index, value, over) {
-//
-//   let data = {
-//     "game": {
-//       "cell": {
-//         "index": index,
-//         "value": value
-//       },
-//       "over": over
-//     }
-//   }
-//
-//   return $.ajax({
-//     url: config.apiUrl + '/games/' + dataGame.game.id,
-//     method: 'PATCH',
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: JSON.stringify(data)
-//   })
-// }
+const createDoctor = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/doctors',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  });
+}
 
 module.exports = {
-  create,
-  show
-  // index,
-  // showGames,
-  // update,
-  // getGameById
+  indexDoctors,
+  indexSessions,
+  showDoctor,
+  destroyDoctors,
+  updateDoctor,
+  createDoctor
 }
+
+
+
+
+
+
+// const getDoctorById = function (id) {
+//   return $.ajax({
+//     // debugger
+//     url: config.apiUrl + '/doctors/' + id,
+//     method: 'GET',
+//     contentType: "application/json",
+//     dataType: "json",
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   });
+// }
+// const getSessionById = function (id) {
+//   return $.ajax({
+//     // debugger
+//     url: config.apiUrl + '/sessions/' + id,
+//     method: 'GET',
+//     contentType: "application/json",
+//     dataType: "json",
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   });
+// }
+
+
+

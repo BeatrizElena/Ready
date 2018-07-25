@@ -5,87 +5,90 @@ const ui = require('./ui')
 const getFormFields = require(`../../../lib/get-form-fields`)
 // const logic = require('./logic-game')
 
-// creating table game and game in the database
-const onCreateSession = function (event) {
+const onGetDoctors = function (event) {
   event.preventDefault()
-  const data = {}
-  $('#session-container').fadeIn()
-
-}
-
-const onGetDoctor = function (event) {
-  event.preventDefault()
-
-  const data = getFormFields(event.target)
-
-  api.show(data)
-    .then(ui.onShowSuccess)
+  api.indexDoctors()
+    .then(ui.onSuccess)
     .catch(ui.onError)
 }
 
+const onGetOneDoctor = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const doctor = data.doctor
+  if (doctor.id.length !== 0) {
+    api.showDoctor(doctor.id)
+      .then(ui.onSuccess)
+      .catch(ui.onError)
+  } else {
+    console.log('Please provide a doctor id!')
+  }
+}
+
+const onCreateDoctor = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  if (data.doctor.first_name === '') {
+    $('#content').html('<p>Doctor\'s first name is required</p>')
+    $('#content').css('background-color', 'red')
+    return false
+  } else if (data.doctor.last_name === '') {
+    $('#content').html('<p>Doctor\'s last name is required</p>')
+    $('#content').css('background-color', 'red')
+    return false
+  }
+  api.createDoctor(data)
+    .then(ui.onCreateSuccess)
+    .catch(ui.onError)
+}
+
+const onUpdateDoctor = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const doctor = data.doctor
+  if (doctor.id === '') {
+    // alert('id required')
+    $('#content').html('<p>Id is required</p>')
+    $('#content').css('background-color', 'red')
+    return false
+  }
+  if (doctor.id.length !== 0) {
+    api.updateDoctor(data)
+      .then(ui.onUpdateSuccess)
+      .catch(ui.onError)
+  } else {
+    console.log('Please provide a doctor id!')
+  }
+}
+
+const onDeleteDoctor = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const doctor = data.doctor
+  if (doctor.id.length !== 0) {
+    api.destroyDoctors(doctor.id)
+      .then(ui.onDeleteSuccess)
+      .catch(ui.onError)
+  } else {
+    console.log('Please provide a doctor id!')
+  }
+}
 
 
-
-
-
-
-
-// const onIndexGame = function (event) {
+// TO-DO: create session with notes and all doctors fields from one record
+// const onCreateSession = function (event) {
 //   event.preventDefault()
-//
-//   api.index()
-//     .then(ui.onIndexSuccess)
-//     .catch(ui.onIndexFailure)
-// }
 
-// const onShowSession = function (event) {
-//   event.preventDefault()
-//   console.log('onShowSession ran!')
-//
-//   const data = getFormFields(event.target)
-//   const session = data.session
-//
-//   if (session.id.length !== 0) {
-//     api.showSessions(session)
-//       .then(ui.onShowSuccess)
-//       .catch(ui.onShowFailure)
-//   } else {
-//     $('#message').html('<p>Please provide a session id!</p>')
-//     $('#message').css('background-color', 'red')
-//     console.log('Please enter a session id!')
-//   }
-// }
+//   $('#session-container').fadeIn()
 
-// const onUpdateGame = function (event) {
-//   event.preventDefault()
-//   console.log('onUpdateGame ran!')
-//
-//   const data = getFormFields(event.target)
-//   const game = data.game
-//
-//   if (game.text === '') {
-//     $('#message').html('<p>Text is required</p>')
-//     $('#message').css('background-color', 'red')
-//     console.log('Text is required!')
-//     return false
-//   }
-//   if (game.id.length !== 0) {
-//     api.update(data)
-//       .then(ui.onUpdateSuccess)
-//       .catch(ui.onUpdateFailure)
-//   } else {
-//     $('#message').html('<p>Please provide a game id!</p>')
-//     $('#message').css('background-color', 'red')
-//     console.log('Please provide a game id!')
-//   }
 // }
 
 const addHandlers = () => {
-  $('#session-create').on('click', onCreateSession)
-  // $('#game-reset').on('click', logic.resetGame)
-  // $('#session-index').on('submit', onIndexSession)
-  // $('#session-show').on('submit', onShowSession)
-  // $('#session-update').on('submit', onUpdateSession)
+  $('#see-all-doctors').on('click', onGetDoctors)
+  $('#search-one-doctor').on('submit', onGetOneDoctor)
+  $('#create-doctors').on('submit', onCreateDoctor)
+  $('#doctor-update').on('submit', onUpdateDoctor)
+  $('#delete-one-doctor').on('submit', onDeleteDoctor)
 }
 
 module.exports = {
