@@ -1,29 +1,29 @@
 'use strict'
 
 const store = require('../store')
-// const logic = require('../games/logic-game')
+const logic = require('../logic')
 
 const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully. Please sign in.')
   $('#message').css('color', 'white')
   $("#sign-up").hide()
-  // logic.resetMessage()
+  logic.resetMessage()
   console.log(`signUpSuccess ran. Data is: ${data}`)
 }
 
-// const signInSuccess = function (data) {
-//   $('#message').text('Signed in successfully')
-//   $('#message').css('color', 'white')
-//   // console.log(`signInSuccess ran. Data is: ${data}`)
-//   store.user = data.user
-//   $('.wrapper').show()
-//   $('#game-options').fadeIn()
-//   $('.dropdown').fadeIn()
-//   logic.resetSignInMessage()
-//   logic.resetMessage()
-//   // console.log('signInSuccess ran. store.user is: ')
-//   // console.log(store.user)
-// }
+const signInSuccess = function (data) {
+  $('#message').text('Signed in successfully')
+  $('#message').css('color', 'white')
+  // console.log(`signInSuccess ran. Data is: ${data}`)
+  store.user = data.user
+  $('.wrapper').show()
+  $('#session-options').fadeIn()
+  $('.dropdown').fadeIn()
+  logic.resetSignInMessage()
+  logic.resetMessage()
+  // console.log('signInSuccess ran. store.user is: ')
+  // console.log(store.user)
+}
 //
 // const signOutSuccess = function (data) {
 //   $('#message').text('Signed out successfully')
@@ -50,16 +50,16 @@ const signUpFailure = function (error) {
   $('#message').text('Error on Sign-up')
   $('#message').css('background-color', 'red')
   logic.resetMessage()
-  // console.log(`signUpFailure ran. Error is: ${error}`)
+  console.log(`signUpFailure ran. Error is: ${error}`)
 }
 //
-// const signInFailure = function (error) {
-//   $('#message').text('Error on Sign-In')
-//   $('#message').css('background-color', 'red')
-//   logic.resetMessage()
-//   // console.log(`signInFailure ran. Error is: `)
-//   // console.log(error)
-// }
+const signInFailure = function (error) {
+  $('#message').text('Error on Sign-In')
+  $('#message').css('background-color', 'red')
+  logic.resetMessage()
+  console.log(`signInFailure ran. Error is: `)
+  console.log(error)
+}
 //
 // const changePasswordFailure = function (error) {
 //   $('#message').text('Error changing password')
@@ -79,11 +79,11 @@ const signUpFailure = function (error) {
 
 module.exports = {
   signUpSuccess,
-  // signInSuccess,
+  signInSuccess,
   // signOutSuccess,
   // changePasswordSuccess,
-  signUpFailure
-  // signInFailure,
+  signUpFailure,
+  signInFailure
   // changePasswordFailure,
   // signOutFailure
 }
