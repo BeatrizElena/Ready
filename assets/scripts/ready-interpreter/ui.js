@@ -11,6 +11,13 @@ const signUpSuccess = function (data) {
   console.log(`signUpSuccess ran. Data is: ${data}`)
 }
 
+const signUpFailure = function (error) {
+  $('#message').text('Error on Sign-up')
+  $('#message').css('background-color', 'red')
+  logic.resetMessage()
+  console.log(`signUpFailure ran. Error is: ${error}`)
+}
+
 const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   $('#message').css('color', 'white')
@@ -24,6 +31,25 @@ const signInSuccess = function (data) {
   // console.log('signInSuccess ran. store.user is: ')
   // console.log(store.user)
 }
+
+const signInFailure = function (error) {
+  $('#message').text('Error on Sign-In')
+  $('#message').css('background-color', 'red')
+  logic.resetMessage()
+  console.log(`signInFailure ran. Error is: `)
+  console.log(error)
+}
+
+const onShowSuccess = function (data) {
+  console.log(data.session)
+  const sessionHTML = (`
+    <h6>Dr. ${data.session.doctor_id.first_name}, ${data.session.doctor_id.last_name}, ${data.session.doctor_id.clinic_affiliation, ${data.session.doctor_id.phone_number},},</h6>
+    <br>
+  `)
+
+  $('#content').html(sessionHTML)
+}
+
 //
 // const signOutSuccess = function (data) {
 //   $('#message').text('Signed out successfully')
@@ -46,20 +72,9 @@ const signInSuccess = function (data) {
 //   // console.log(`changePasswordSuccess ran.`)
 // }
 //
-const signUpFailure = function (error) {
-  $('#message').text('Error on Sign-up')
-  $('#message').css('background-color', 'red')
-  logic.resetMessage()
-  console.log(`signUpFailure ran. Error is: ${error}`)
-}
+
 //
-const signInFailure = function (error) {
-  $('#message').text('Error on Sign-In')
-  $('#message').css('background-color', 'red')
-  logic.resetMessage()
-  console.log(`signInFailure ran. Error is: `)
-  console.log(error)
-}
+
 //
 // const changePasswordFailure = function (error) {
 //   $('#message').text('Error changing password')
@@ -79,11 +94,11 @@ const signInFailure = function (error) {
 
 module.exports = {
   signUpSuccess,
+  signUpFailure,
   signInSuccess,
+  signInFailure
   // signOutSuccess,
   // changePasswordSuccess,
-  signUpFailure,
-  signInFailure
   // changePasswordFailure,
   // signOutFailure
 }

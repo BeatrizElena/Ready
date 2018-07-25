@@ -13,6 +13,23 @@ const onCreateSession = function (event) {
 
 }
 
+const onGetDoctor = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+
+  api.show(data)
+    .then(ui.onShowSuccess)
+    .catch(ui.onError)
+}
+
+
+
+
+
+
+
+
 // const onIndexGame = function (event) {
 //   event.preventDefault()
 //

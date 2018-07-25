@@ -26,6 +26,17 @@ const create = function () {
   });
 }
 
+const show = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/sessions/' + data.doctor.id,
+    method: 'GET'
+  })
+}
+
+
+
+
+
 // const index = function () {
 //   return $.ajax({
 //     url: config.apiUrl + '/games?over=true',
@@ -86,7 +97,8 @@ const create = function () {
 // }
 
 module.exports = {
-  create
+  create,
+  show
   // index,
   // showGames,
   // update,
