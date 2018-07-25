@@ -32,17 +32,7 @@
                     <form class="border" id="sign-out">
                         <button id="sign-out-btn" class="btn btn-info btn-sm">Sign Out</button>
                     </form>
-
                   </li>
-                  <!-- <li>
-                      <form id="game-show" class="border">
-                          <fieldset>
-                            <legend>Get One Game</legend>
-                              <input type="text" name="game[id]" placeholder="Enter Game ID">
-                              <input type="submit">
-                          </fieldset>
-                          </form>
-                  </li> -->
                 </ul>
               </li>
             </ul>
@@ -57,19 +47,23 @@
         <!-- form#sign-up.border  -->
         <form class="border" id="sign-up">
           <fieldset>
-            <legend>Sign up!</legend>
+            <input type="text" name="credentials[first_name]" placeholder="First Name">
+            <input type="text" name="credentials[last_name]" placeholder="Last Name">
+            <br>
             <input type="text" name="credentials[email]" placeholder="Email">
             <input type="password" name="credentials[password]" placeholder="Password">
             <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+            <br>
             <input type="submit" value="Sign up!">
           </fieldset>
         </form>
         <!-- form#sign-up.border  -->
+        <br>
         <form class="border" id="sign-in">
           <fieldset>
-            <legend>Sign in</legend>
             <input type="text" name="credentials[email]" id="user-email" placeholder="Email">
             <input type="password" name="credentials[password]" placeholder="Password">
+            <br>
             <input type="submit" value="Sign in">
           </fieldset>
         </form>
@@ -81,20 +75,18 @@
       </header>
 
       <div class="wrapper">
-        <div id="session-options" class="col-md-4" style="display: none">
-          <ul>
-            <li>
-              <a id="session-create" href="#">Create New Session</a>
-            </li>
-            <li>
-              <a id="session-reset" href="#">Reset Session</a>
-            </li>
-            <!-- <li><a id="show-games" href="#">Show games</a></li> -->
-          </ul>
-          <br />
-          <br />
-
+        <div id="session-options" class="col-md-12" style="display: none">
+          <form class="border" id="search">
+            <fieldset>
+              <input type="text" name="session[doctor_id]" id="search_doctor" placeholder="Search for a Doctor">
+              <br>
+              <input type="submit" value="Search">
+            </fieldset>
+          </form>
         </div>
+        <div>
+
+      <div class="wrapper2"   >
         <div id="session-container" class="col-md-8" style="display: none">
           <div class="session">
 
@@ -102,8 +94,8 @@
         </div>
 
         <div id=""></div>
+      </div>
 
-        <div>
 
 
           <!-- Create  the modals for changing password->
