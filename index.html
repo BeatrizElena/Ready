@@ -74,19 +74,70 @@
         <p class="color-white" id="message2"></p>
       </header>
 
-      <div class="wrapper">
-        <div id="session-options" class="col-md-12" style="display: none">
-          <form class="border" id="search">
+      <h2>Get All Doctors</h2>
+      <form class="doctors" id="see-all-doctors">
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-default">Get List of All Doctors</button>
+      </form>
+      <br />
+      <br />
+      <h2>Get One Doctor</h2>
+      <form class="books" id="search-one-doctor">
+        <div class="form-group">
+          <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
+        </div>
+        <button type="submit" class="btn btn-default">Get Doctor Profile</button>
+      </form>
+      <br>
+      <div class="doctor-wrapper">
+        <div id="session-search" class="col-md-12">
+          <h6>Please fillout the fields below to create your own doctor profile</h6>
+          <form class="border" id="create-doctors">
             <fieldset>
-              <input type="text" name="session[doctor_id]" id="search_doctor" placeholder="Search for a Doctor">
+              <input type="text" name="doctor[first_name]" class="search_doctor" placeholder="First Name">
               <br>
-              <input type="submit" value="Search">
+              <input type="text" name="doctor[last_name]" class="search_doctor" placeholder="Last Name">
+              <br>
+              <input type="text" name="doctor[clinic_affiliation]" class="search_doctor" placeholder="Clinic Affiliation">
+              <br>
+              <input type="text" name="doctor[sub_specialty_english]" class="search_doctor" placeholder="SubSpecialty: English">
+              <br>
+              <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor" placeholder="SubSpecialty: Spanish">
+              <br>
+              <input type="submit" id="create-profile" value="Create Profile">
             </fieldset>
           </form>
         </div>
         <div>
 
-      <div class="wrapper2"   >
+        <h2>Update One Doctor</h2>
+        <form class="doctors" id="doctor-update">
+          <div class="form-group">
+            <input type="text" name="doctor[id]" placeholder="Resource ID Here">
+            <br>
+            <input type="text" name="doctor[first_name]" placeholder="Doctor First Name Here">
+            <br>
+            <input type="text" name="doctor[last_name]" placeholder="Doctor Last Name Here">
+            <br>
+            <input type="text" name="doctor[clinic_affiliation]" placeholder="Clinic Affiliation Here">
+            <br>
+            <input type="text" name="doctor[sub_specialty_english]" placeholder="Sub_Specialty English Here">
+            <br>
+            <input type="text" name="doctor[sub_specialty_spanish]" placeholder="Sub_Specialty Spanish Here">
+          </div>
+          <button type="submit" class="btn btn-default">Update Doctor Profile</button>
+        </form>
+
+        <h2>Delete One Doctor</h2>
+      <form class="doctors" id="delete-one-doctor">
+        <div class="form-group">
+          <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
+        </div>
+        <button type="submit" class="btn btn-default">Delete Doctor Profile</button>
+      </form>
+
+      <div class="session-notes-wrapper"   >
         <div id="session-container" class="col-md-8" style="display: none">
           <div class="session">
 
