@@ -5,8 +5,7 @@ const store = require('../store')
 
 const signUp = function (data) {
   return $.ajax({
-    // url: config.apiUrl + '/sign-up',
-    url: 'localhost:4741' + '/sign-up',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     data
   })
