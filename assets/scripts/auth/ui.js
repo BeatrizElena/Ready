@@ -17,7 +17,7 @@ const signInSuccess = function (data) {
   // console.log(`signInSuccess ran. Data is: ${data}`)
   store.user = data.user
   $('.wrapper').show()
-  $('#game-options').fadeIn()
+  $('#session-options').fadeIn()
   $('.dropdown').fadeIn()
   logic.resetSignInMessage()
   logic.resetMessage()
