@@ -2,8 +2,12 @@
 
 const store = require('../store')
 
+// const showDoctorsTemplate = require('../templates/ready-interpreter.handlebars')
+
 const onSuccess = function (data) {
   console.log('data is ', data)
+  // const showDoctorssHtml = showItemsTemplate({ items: data.items })
+  // $('.content').append(showDoctorssHtml)
   if (!data) {
     console.warn('Either you deleted something, or something went wrong.')
   } else if (data.doctor) {

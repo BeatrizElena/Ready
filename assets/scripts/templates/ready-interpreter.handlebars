@@ -1,0 +1,13 @@
+{{#each items as |item|}} {{log item}}
+
+<!-- Developers, why are we using data-id and not just id? -->
+<h1 data-id="{{doctor.id}}">
+    <small>Doctor: {{doctor.last_name}}</small>
+</h1>
+
+<ul data-id="{{doctor.id}}">
+    <li>{{#if doctor.id}} {{doctor.first.name}} {{#if doctor.last_name}} {{doctor.clinic_affiliation}} {{#if doctor.sub_specialty_english}} {{doctor.sub_specialty_spanish}} {{#if doctor.id}} {{doctor.first.name}} {{else}} No description provided {{/if}}
+    </li>
+</ul>
+
+{{/each}}
