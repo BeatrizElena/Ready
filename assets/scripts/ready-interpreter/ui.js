@@ -16,6 +16,21 @@ const onSuccess = function (data) {
     console.log(data.doctors)
     store.doctors = data.doctors
     console.log(store)
+
+      // clear content div, in case something is already there
+  $('#content').html('')
+
+  data.doctors.forEach(doctor => {
+    const doctorHTML = (`
+      <p>ID: ${doctor.id}</p>
+      <h4>Dr. ${doctor.first_name} ${doctor.last_name},  ${doctor.clinic_affiliation},  Main Phone:  ${doctor.phone_number}</h4>
+      <p>Sub-Specialty - English: ${doctor.sub_specialty_english}</p>
+      <p>Sub-Specialty - Spanish: ${doctor.sub_specialty_spanish}</p>
+      <br>
+    `)
+
+    $('#content').append(doctorHTML)
+  })
   }
 }
 
