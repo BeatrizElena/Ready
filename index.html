@@ -10,6 +10,7 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     </head>
     <body>
       <nav class="main-nav navbar navbar-default">
@@ -40,35 +41,45 @@
         <!-- end /.container-fluid -->
       </nav>
 
-      <div class="initial-view col-md-12">
-        <h3 id="sign-in-message">Sign In to Add, Update or Delete Doctor's Information</h3>
+      <div class="initial-view">
+        <h3 class="col-md-6" id="sign-in-message">Sign In to Add, Update or Delete Doctor's Information</h3>
         <p id="message"></p>
         <!-- form#sign-up.border  -->
-        <form class="border" id="sign-up">
-          <fieldset>
+        <form id="sign-up">
+            <div class="form-row">
+            <div class="form-group col-md-6">
             <input type="text" name="credentials[first_name]" class="form-control" placeholder="First Name">
-            <br>
+            </div>
+            <div class="form-group col-md-6">
             <input type="text" name="credentials[last_name]" class="form-control" placeholder="Last Name">
-            <br>
+            </div>
+          </div>
+            <div class="form-group col-md-12">
             <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
-            <br>
+            </div>
+            <div class="form-group col-md-12">
             <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
-            <br>
+            </div>
+            <div class="form-group col-md-12">
             <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation">
-            <br>
-            <br>
+            </div>
+            <div class="form-group col-md-12">
             <input type="submit" class="btn btn-info btn-md" value="Sign up!">
-          </fieldset>
+          </div>
         </form>
         <!-- form#sign-up.border  -->
         <br>
-        <form class="border" id="sign-in">
-          <fieldset>
-            <input type="text" name="credentials[email]" id="user-email" class="form-control" placeholder="Email">
-            <br>
+        <form id="sign-in">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <input type="text" name="credentials[email]" id="user-email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group col-md-12">
             <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
-            <br>
+          </div>
+          <div class="form-group col-md-12">
             <input type="submit" class="btn btn-info btn-md" value="Sign in">
+          </div>
           </fieldset>
         </form>
 
