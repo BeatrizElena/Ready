@@ -5,17 +5,17 @@ const store = require('../store')
 // const showDoctorsTemplate = require('../templates/ready-interpreter.handlebars')
 
 const onSuccess = function (data) {
-  console.log('data is ', data)
+  // console.log('data is ', data)
   // const showDoctorssHtml = showItemsTemplate({ items: data.items })
   // $('.content').append(showDoctorssHtml)
   if (!data) {
-    console.warn('Either you deleted something, or something went wrong.')
+    // console.warn('Either you deleted something, or something went wrong.')
   } else if (data.doctor) {
-    console.log(data.doctor)
+    // console.log(data.doctor)
   } else {
-    console.log(data.doctors)
+    // console.log(data.doctors)
     store.doctors = data.doctors
-    console.log(store)
+    // console.log(store)
 
       // clear content div, in case something is already there
   $('#content').html('')
@@ -35,7 +35,11 @@ const onSuccess = function (data) {
 }
 
 const onGetOneDoctorSuccess = function(data) {
-  $('#content').html('')
+  if (!data.doctor.id){
+    $('#content').html('')
+    $('#content').html(`Please enter a valid id`)
+  } else {
+    $('#content').html('')
   const oneDoctorHTML = (`
     <p>ID: ${data.doctor.id}</p>
     <h4>Dr. ${data.doctor.first_name} ${data.doctor.last_name},  ${data.doctor.clinic_affiliation},  Main Phone:  ${data.doctor.phone_number}</h4>
@@ -44,19 +48,24 @@ const onGetOneDoctorSuccess = function(data) {
     <br>
   `)
   $('#content').append(oneDoctorHTML)
+  }
 }
 
 const onError = function (response) {
-  console.error(response)
+  // console.error(response)
+  $('#content').html('')
+  $('#content').html(`${response}`)
 }
 
 
 const onDeleteSuccess = function () {
-  console.log('Doctor was successfully deleted.')
+  // console.log('Doctor was successfully deleted.')
+  $('#content').html('')
+  $('#content').html(`Doctor's profile was successfully deleted`)
 }
 
 const onUpdateSuccess = function (data) {
-  console.log('You successfully updated the doctor!')
+  // console.log('You successfully updated the doctor!')
   store.doctor = data.doctor
   $('#content').html('')
   const updateDoctorHTML = (`
@@ -70,7 +79,7 @@ const onUpdateSuccess = function (data) {
 }
 
 const onCreateSuccess = function (data) {
-  console.log('You successfully created a doctor!')
+  // console.log('You successfully created a doctor!')
   store.doctor = data.doctor
   $('#content').html('')
   const createDoctorHTML = (`

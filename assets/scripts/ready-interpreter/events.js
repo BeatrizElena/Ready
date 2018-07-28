@@ -43,7 +43,6 @@ const onUpdateDoctor = function (event) {
   const data = getFormFields(event.target)
   const doctor = data.doctor
   if (doctor.id === '') {
-    // alert('id required')
     $('#content').html('<p>Id is required</p>')
     $('#content').css('background-color', 'red')
     return false
