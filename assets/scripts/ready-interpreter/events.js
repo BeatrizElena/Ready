@@ -29,7 +29,7 @@ const onCreateDoctor = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   if ((data.doctor.first_name === '') || data.doctor.last_name === '' || data.doctor.clinic_affiliation === '') {
-    $('#content').html('<p>DPlease complete the fields for First and Last Name and for Clinic Affiliation</p>')
+    $('#content').html('<p>Please complete the fields for First and Last Name and for Clinic Affiliation</p>')
     $('#content').css('background-color', 'red')
     return false
   }

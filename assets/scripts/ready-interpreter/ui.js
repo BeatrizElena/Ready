@@ -55,9 +55,18 @@ const onDeleteSuccess = function () {
   console.log('Doctor was successfully deleted.')
 }
 
-const onUpdateSuccess = function () {
+const onUpdateSuccess = function (data) {
   console.log('You successfully updated the doctor!')
+  store.doctor = data.doctor
   $('#content').html('')
+  const updateDoctorHTML = (`
+    <p>ID: ${store.doctor.id}</p>
+    <h4>Dr. ${store.doctor.first_name} ${store.doctor.last_name},  ${store.doctor.clinic_affiliation},  Main Phone:  ${store.doctor.phone_number}</h4>
+    <p>Sub-Specialty - English: ${store.doctor.sub_specialty_english}</p>
+    <p>Sub-Specialty - Spanish: ${store.doctor.sub_specialty_spanish}</p>
+    <br>
+  `)
+  $('#content').append(updateDoctorHTML)
 }
 
 const onCreateSuccess = function (data) {

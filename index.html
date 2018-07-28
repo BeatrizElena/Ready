@@ -74,47 +74,47 @@
         <p class="color-white" id="message2"></p>
       </header>
 
-      <h2>See All Doctors</h2>
-      <form class="doctors" id="see-all-doctors">
-        <div class="form-group">
-        </div>
-        <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
-      </form>
       
-      <!-- See all doctors Modal -->
-      <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
-          <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Doctors Information</h4>
-              </div>
-              <div class="modal-body">
-                <!-- display all doctors -->
-                <div id="content" class="content"></div>             
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div> <!-- See all doctors Modal ends here-->
-      <br />
-      <br />
-      <h2>Get One Doctor</h2>
-      <form class="doctors" id="search-one-doctor">
-        <div class="form-group">
-          <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
-        </div>
-        <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
-      </form>
-
-      <br />
-      <br />
-      <br>
       <div class="doctor-wrapper">
         <div id="session-search" class="col-md-12">
+            <h2>See All Doctors</h2>
+            <form class="doctors" id="see-all-doctors">
+              <div class="form-group">
+              </div>
+              <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
+            </form>
+            
+            <!-- Doctors Modal -->
+            <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Doctors Information</h4>
+                    </div>
+                    <div class="modal-body">
+                      <!-- display all doctors -->
+                      <div id="content" class="content"></div>             
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- Doctors Modal ends here-->
+            <br />
+            <br />
+            <h2>Get One Doctor</h2>
+            <form class="doctors" id="search-one-doctor">
+              <div class="form-group">
+                <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
+              </div>
+              <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
+            </form>      
+            <br />
+            <br />
+
           <h2>Add One Doctor</h2>
           <form class="border" id="create-doctors">
             <fieldset>
@@ -133,25 +133,27 @@
               <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">
             </fieldset>
           </form>
-        </div>
-        <div>
+          <br />
+          <br />
 
-        <h2>Update One Doctor</h2>
-        <form class="doctors" id="doctor-update">
+          <h2>Update One Doctor</h2>
+          <form class="doctors" id="doctor-update">
           <div class="form-group">
-            <input type="text" name="doctor[id]" placeholder="Resource ID Here">
+            <input type="text" name="doctor[id]" class="search_doctor" placeholder="Resource ID Here">
             <br>
-            <input type="text" name="doctor[first_name]" placeholder="Doctor First Name Here">
+            <input type="text" name="doctor[first_name]" class="search_doctor" placeholder="Doctor First Name Here">
             <br>
-            <input type="text" name="doctor[last_name]" placeholder="Doctor Last Name Here">
+            <input type="text" name="doctor[last_name]" class="search_doctor" placeholder="Doctor Last Name Here">
             <br>
-            <input type="text" name="doctor[clinic_affiliation]" placeholder="Clinic Affiliation Here">
+            <input type="text" name="doctor[clinic_affiliation]" class="search_doctor" placeholder="Clinic Affiliation Here">
             <br>
-            <input type="text" name="doctor[sub_specialty_english]" placeholder="Sub_Specialty English Here">
+            <input type="text" name="doctor[phone_number]" class="search_doctor" placeholder="Main Phone Number">
             <br>
-            <input type="text" name="doctor[sub_specialty_spanish]" placeholder="Sub_Specialty Spanish Here">
+            <input type="text" name="doctor[sub_specialty_english]" class="search_doctor" placeholder="Sub_Specialty English Here">
+            <br>
+            <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor" placeholder="Sub_Specialty Spanish Here">
           </div>
-          <button type="submit" class="btn btn-default">Update Doctor Profile</button>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Update Doctor Profile</button>
         </form>
 
         <h2>Delete One Doctor</h2>
@@ -161,6 +163,10 @@
         </div>
         <button type="submit" class="btn btn-default">Delete Doctor Profile</button>
       </form>
+        </div>
+        <div>
+
+        
 
       <div class="session-notes-wrapper"   >
         <div id="session-container" class="col-md-8" style="display: none">
