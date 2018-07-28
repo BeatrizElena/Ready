@@ -14,12 +14,11 @@
     <body>
       <nav class="main-nav navbar navbar-default">
         <div class="container-fluid">
+          <h1>Be Ready!</h1>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <h1>Be Ready!</h1>
-
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown" style="display: none">
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other options
                   <span class="caret"></span>
                 </a>
@@ -28,7 +27,6 @@
                     <button type="button" id="changePass" class="btn btn-info btn-sm" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
                   </li>
                   <li>
-
                     <form class="border" id="sign-out">
                         <button id="sign-out-btn" class="btn btn-info btn-sm">Sign Out</button>
                     </form>
@@ -42,37 +40,60 @@
         <!-- end /.container-fluid -->
       </nav>
 
-      <div class="initial-view">
-        <h6>Sign In to edit session information</h6>
+      <div class="initial-view col-md-12">
+        <h3 id="sign-in-message">Sign In to Add, Update or Delete Doctor's Information</h3>
+        <p id="message"></p>
         <!-- form#sign-up.border  -->
         <form class="border" id="sign-up">
           <fieldset>
-            <input type="text" name="credentials[first_name]" placeholder="First Name">
-            <input type="text" name="credentials[last_name]" placeholder="Last Name">
+            <input type="text" name="credentials[first_name]" class="form-control" placeholder="First Name">
             <br>
-            <input type="text" name="credentials[email]" placeholder="Email">
-            <input type="password" name="credentials[password]" placeholder="Password">
-            <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+            <input type="text" name="credentials[last_name]" class="form-control" placeholder="Last Name">
             <br>
-            <input type="submit" value="Sign up!">
+            <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
+            <br>
+            <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+            <br>
+            <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation">
+            <br>
+            <br>
+            <input type="submit" class="btn btn-info btn-md" value="Sign up!">
           </fieldset>
         </form>
         <!-- form#sign-up.border  -->
         <br>
         <form class="border" id="sign-in">
           <fieldset>
-            <input type="text" name="credentials[email]" id="user-email" placeholder="Email">
-            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="text" name="credentials[email]" id="user-email" class="form-control" placeholder="Email">
             <br>
-            <input type="submit" value="Sign in">
+            <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+            <br>
+            <input type="submit" class="btn btn-info btn-md" value="Sign in">
           </fieldset>
         </form>
-      </div>
 
-      <header class="main-head">
-        <p class="color-white" id="message"></p>
-        <p class="color-white" id="message2"></p>
-      </header>
+        <!-- Doctors Modal -->
+            <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Doctors Information</h4>
+                    </div>
+                    <div class="modal-body">
+                      <!-- display all doctors -->
+                      <div id="content" class="content"></div>             
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- Doctors Modal ends here-->
+            <br />
+            <br />
+      </div>
 
       
       <div class="doctor-wrapper">
@@ -108,7 +129,7 @@
             <h2>Get One Doctor</h2>
             <form class="doctors" id="search-one-doctor">
               <div class="form-group">
-                <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
+                <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
               </div>
               <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
             </form>      
@@ -118,17 +139,17 @@
           <h2>Add One Doctor</h2>
           <form class="border" id="create-doctors">
             <fieldset>
-              <input type="text" name="doctor[first_name]" class="search_doctor" placeholder="First Name">
+              <input type="text" name="doctor[first_name]" class="search_doctor form-control" placeholder="First Name">
               <br>
-              <input type="text" name="doctor[last_name]" class="search_doctor" placeholder="Last Name">
+              <input type="text" name="doctor[last_name]" class="search_doctor form-control" placeholder="Last Name">
               <br>
-              <input type="text" name="doctor[clinic_affiliation]" class="search_doctor" placeholder="Clinic Affiliation">
+              <input type="text" name="doctor[clinic_affiliation]" class="search_doctor form-control" placeholder="Clinic Affiliation">
               <br>
-              <input type="text" name="doctor[phone_number]" class="search_doctor" placeholder="Main Phone Number">
+              <input type="text" name="doctor[phone_number]" class="search_doctor form-control" placeholder="Main Phone Number">
               <br>
-              <input type="text" name="doctor[sub_specialty_english]" class="search_doctor" placeholder="SubSpecialty: English">
+              <input type="text" name="doctor[sub_specialty_english]" class="search_doctor form-control" placeholder="SubSpecialty: English">
               <br>
-              <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor" placeholder="SubSpecialty: Spanish">
+              <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor form-control" placeholder="SubSpecialty: Spanish">
               <br>
               <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">
             </fieldset>
@@ -139,19 +160,19 @@
           <h2>Update One Doctor</h2>
           <form class="doctors" id="doctor-update">
           <div class="form-group">
-            <input type="text" name="doctor[id]" class="search_doctor" placeholder="Resource ID Here">
+            <input type="text" name="doctor[id]" class="search_doctor form-control" placeholder="Resource ID Here">
             <br>
-            <input type="text" name="doctor[first_name]" class="search_doctor" placeholder="Doctor First Name Here">
+            <input type="text" name="doctor[first_name]" class="search_doctor form-control" placeholder="Doctor First Name Here">
             <br>
-            <input type="text" name="doctor[last_name]" class="search_doctor" placeholder="Doctor Last Name Here">
+            <input type="text" name="doctor[last_name]" class="search_doctor form-control" placeholder="Doctor Last Name Here">
             <br>
-            <input type="text" name="doctor[clinic_affiliation]" class="search_doctor" placeholder="Clinic Affiliation Here">
+            <input type="text" name="doctor[clinic_affiliation]" class="search_doctor form-control" placeholder="Clinic Affiliation Here">
             <br>
-            <input type="text" name="doctor[phone_number]" class="search_doctor" placeholder="Main Phone Number">
+            <input type="text" name="doctor[phone_number]" class="search_doctor form-control" placeholder="Main Phone Number">
             <br>
-            <input type="text" name="doctor[sub_specialty_english]" class="search_doctor" placeholder="Sub_Specialty English Here">
+            <input type="text" name="doctor[sub_specialty_english]" class="search_doctor form-control" placeholder="Sub_Specialty English Here">
             <br>
-            <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor" placeholder="Sub_Specialty Spanish Here">
+            <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor form-control" placeholder="Sub_Specialty Spanish Here">
           </div>
           <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Update Doctor Profile</button>
         </form>
@@ -159,9 +180,9 @@
         <h2>Delete One Doctor</h2>
       <form class="doctors" id="delete-one-doctor">
         <div class="form-group">
-          <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
+          <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
         </div>
-        <button type="submit" class="btn btn-default">Delete Doctor Profile</button>
+        <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Delete Doctor Profile</button>
       </form>
         </div>
         <div>
