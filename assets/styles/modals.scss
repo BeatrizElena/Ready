@@ -1,0 +1,28 @@
+// (Sources:
+// 1) https://www.w3schools.com/howto/howto_css_signup_form.asp
+// Use site's Try it Button to see their code
+// /* The Modal (background) */
+.modal {
+  background-color: $modal-background;//#474e5d-find color
+  display: none; //Hidden by default
+  height: 100%; // Full height
+  left: 0;
+  overflow: auto; // Enable scroll if needed
+  padding-top: 50px;
+  position: fixed; // Stay in place
+  top: 0;
+  width: 100%; // Full width
+  z-index: 1; // Sit on top
+}
+
+// Modal Content/Box
+.modal-content {
+  background-color: $modal-content;
+  border: 1px solid $modal-content-border;
+  margin: 5% auto; // 5% on all sides and centered
+  width: 70%; // Could be more or less, depending on screen size
+}
+
+.modal-body {
+  background-color: $gainsboro;
+}
