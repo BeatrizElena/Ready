@@ -115,7 +115,7 @@
       <br>
       <div class="doctor-wrapper">
         <div id="session-search" class="col-md-12">
-          <h6>Please fillout the fields below to create your own doctor profile</h6>
+          <h2>Add One Doctor</h2>
           <form class="border" id="create-doctors">
             <fieldset>
               <input type="text" name="doctor[first_name]" class="search_doctor" placeholder="First Name">
@@ -124,11 +124,13 @@
               <br>
               <input type="text" name="doctor[clinic_affiliation]" class="search_doctor" placeholder="Clinic Affiliation">
               <br>
+              <input type="text" name="doctor[phone_number]" class="search_doctor" placeholder="Main Phone Number">
+              <br>
               <input type="text" name="doctor[sub_specialty_english]" class="search_doctor" placeholder="SubSpecialty: English">
               <br>
               <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor" placeholder="SubSpecialty: Spanish">
               <br>
-              <input type="submit" id="create-profile" value="Create Profile">
+              <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">
             </fieldset>
           </form>
         </div>

@@ -60,10 +60,18 @@ const onUpdateSuccess = function () {
   $('#content').html('')
 }
 
-const onCreateSuccess = function () {
+const onCreateSuccess = function (data) {
   console.log('You successfully created a doctor!')
-  $('#content').html('You created a new doctor profile!')
-  $('#content').css('background-color', 'green')
+  store.doctor = data.doctor
+  $('#content').html('')
+  const createDoctorHTML = (`
+    <p>ID: ${store.doctor.id}</p>
+    <h4>Dr. ${store.doctor.first_name} ${store.doctor.last_name},  ${store.doctor.clinic_affiliation},  Main Phone:  ${store.doctor.phone_number}</h4>
+    <p>Sub-Specialty - English: ${store.doctor.sub_specialty_english}</p>
+    <p>Sub-Specialty - Spanish: ${store.doctor.sub_specialty_spanish}</p>
+    <br>
+  `)
+  $('#content').append(createDoctorHTML)
 }
 
 module.exports = {

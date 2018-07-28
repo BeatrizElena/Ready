@@ -28,12 +28,8 @@ const onGetOneDoctor = function (event) {
 const onCreateDoctor = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  if (data.doctor.first_name === '') {
-    $('#content').html('<p>Doctor\'s first name is required</p>')
-    $('#content').css('background-color', 'red')
-    return false
-  } else if (data.doctor.last_name === '') {
-    $('#content').html('<p>Doctor\'s last name is required</p>')
+  if ((data.doctor.first_name === '') || data.doctor.last_name === '' || data.doctor.clinic_affiliation === '') {
+    $('#content').html('<p>DPlease complete the fields for First and Last Name and for Clinic Affiliation</p>')
     $('#content').css('background-color', 'red')
     return false
   }
