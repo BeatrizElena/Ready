@@ -4,44 +4,42 @@ const store = require('../store')
 // const logic = require('../logic')
 
 const signUpSuccess = function (data) {
-  $('#message').text('Signed up successfully. Please sign in.')
-  $('#message').css('color', 'white')
   $("#sign-up").hide()
-  $('#message').fadeOut()
-  console.log(`signUpSuccess ran. Data is: ${data}`)
+  // console.log(`signUpSuccess ran. Data is: ${data}`)
+  $('#message').text('Sign-up was successful')
+
+  // 5 seconds after the message appears, clear it
+  setTimeout(() => $('#message').text(''), 5000)
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Signed in successfully')
-  $('#message').css('color', 'white')
   // console.log(`signInSuccess ran. Data is: ${data}`)
   store.user = data.user
-  // $('#message').fadeOut()
-  $('.dropdown-menu').fadeIn()
+  $("#sign-up").hide()
+  $("#sign-in").hide()
+  $("#sign-in-message").hide()
+  $('.navbar-collapse').fadeIn()
   $('.doctor-wrapper').fadeIn()
-  console.log('signInSuccess ran. store.user is: ')
-  console.log(store.user)
+  // console.log('signInSuccess ran. store.user is: ')
+  // console.log(store.user)
 }
 
 const signOutSuccess = function (data) {
-  $('#message').text('Signed out successfully')
-  $('#message').css('color', 'white')
-  // $('.wrapper').hide()
-  // $('.dropdown').empty()
-  $('#user-email').text('')
   store.user = null
-  // $('.initial-view').fadeIn()
-  // $("input[type=text], input[type=password], textarea").val("")
-  console.log(`signOutSuccess ran.`)
+  $('.doctor-wrapper').hide()
+  $('.navbar-collapse').empty()
+  $("#sign-up").fadeIn()
+  $("#sign-in").fadeIn()
+  // empty values from sign-in/sign-up fields
+  $("input[type=text], input[type=password], textarea").val("")
+  // console.log(`signOutSuccess ran.`)
 }
 
 const changePasswordSuccess = function (data) {
-  $('#message').text('Changed password successfully')
-  $('#message').css('color', 'white')
-  // $('#changePwdModal, .modal-backdrop').hide(),
-  //   $('#message').fadeIn()
-  // logic.resetMessage()
-  // console.log(`changePasswordSuccess ran.`)
+  $('#message').text('Password change was successful')
+
+  // 5 seconds after the message appears, clear it
+  setTimeout(() => $('#message').text(''), 5000)
 }
 
 const signUpFailure = function (error) {
