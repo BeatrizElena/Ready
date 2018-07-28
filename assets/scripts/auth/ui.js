@@ -20,6 +20,7 @@ const signInSuccess = function (data) {
   $("#sign-in-message").hide()
   $('.navbar-collapse').fadeIn()
   $('.doctor-wrapper').fadeIn()
+  $('.dropdown').show()
   // console.log('signInSuccess ran. store.user is: ')
   // console.log(store.user)
 }
