@@ -88,7 +88,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">See a List of All Doctors</h4>
+                <h4 class="modal-title">Doctors Information</h4>
               </div>
               <div class="modal-body">
                 <!-- display all doctors -->
@@ -103,12 +103,15 @@
       <br />
       <br />
       <h2>Get One Doctor</h2>
-      <form class="books" id="search-one-doctor">
+      <form class="doctors" id="search-one-doctor">
         <div class="form-group">
           <input type="text" name="doctor[id]" placeholder="Doctor ID Here">
         </div>
-        <button type="submit" class="btn btn-default">Get Doctor Profile</button>
+        <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
       </form>
+
+      <br />
+      <br />
       <br>
       <div class="doctor-wrapper">
         <div id="session-search" class="col-md-12">

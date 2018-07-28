@@ -34,9 +34,22 @@ const onSuccess = function (data) {
   }
 }
 
+const onGetOneDoctorSuccess = function(data) {
+  $('#content').html('')
+  const oneDoctorHTML = (`
+    <p>ID: ${data.doctor.id}</p>
+    <h4>Dr. ${data.doctor.first_name} ${data.doctor.last_name},  ${data.doctor.clinic_affiliation},  Main Phone:  ${data.doctor.phone_number}</h4>
+    <p>Sub-Specialty - English: ${data.doctor.sub_specialty_english}</p>
+    <p>Sub-Specialty - Spanish: ${data.doctor.sub_specialty_spanish}</p>
+    <br>
+  `)
+  $('#content').append(oneDoctorHTML)
+}
+
 const onError = function (response) {
   console.error(response)
 }
+
 
 const onDeleteSuccess = function () {
   console.log('Doctor was successfully deleted.')
@@ -55,6 +68,7 @@ const onCreateSuccess = function () {
 
 module.exports = {
   onSuccess,
+  onGetOneDoctorSuccess,
   onError,
   onDeleteSuccess,
   onUpdateSuccess,

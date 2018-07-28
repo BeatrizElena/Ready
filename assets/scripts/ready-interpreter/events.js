@@ -18,7 +18,7 @@ const onGetOneDoctor = function (event) {
   const doctor = data.doctor
   if (doctor.id.length !== 0) {
     api.showDoctor(doctor.id)
-      .then(ui.onSuccess)
+      .then(ui.onGetOneDoctorSuccess)
       .catch(ui.onError)
   } else {
     console.log('Please provide a doctor id!')
