@@ -1,176 +1,178 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Ready!</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+<head>
+  <title>Ready!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-      
-    </head>
-    <body>
-      <nav class="main-nav navbar navbar-default">
-        <div class="container-fluid">
-          <h1>Be Ready!</h1>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other options
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <button type="button" id="changePass" class="btn btn-info btn-sm" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
-                  </li>
-                  <li>
-                    <form class="border" id="sign-out">
-                        <button id="sign-out-btn" class="btn btn-info btn-sm">Sign Out</button>
-                    </form>
-                  </li>
-                </ul>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+  <nav class="main-nav navbar navbar-default">
+    <div class="container-fluid">
+      <h1>Be Ready!</h1>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other options
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <button type="button" id="changePass" class="btn btn-info btn-sm" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
+              </li>
+              <li>
+                <form class="border" id="sign-out">
+                  <button id="sign-out-btn" class="btn btn-info btn-sm">Sign Out</button>
+                </form>
               </li>
             </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- end /.container-fluid -->
-      </nav>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- end /.container-fluid -->
+  </nav>
 
-      <div class="initial-view">
-        <h3 class="col-md-6" id="sign-in-message">Sign In to Add, Update or Delete Doctor's Information</h3>
-        <p id="message"></p>
-        <!-- form#sign-up.border  -->
-        <form id="sign-up">
-            <div class="form-row">
-            <div class="form-group col-md-6">
-            <input type="text" name="credentials[first_name]" class="form-control" placeholder="First Name">
-            </div>
-            <div class="form-group col-md-6">
-            <input type="text" name="credentials[last_name]" class="form-control" placeholder="Last Name">
-            </div>
+  <div class="initial-view">
+    <h3 class="col-md-12" id="sign-in-message">Sign In to Add, Update or Delete Doctor's Information</h3>
+    <p id="message col-md-12"></p>
+    <!-- form#sign-up.border  -->
+    <form id="sign-up">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" name="credentials[first_name]" class="form-control" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" name="credentials[last_name]" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="submit" class="btn btn-info btn-md" value="Sign up!">
+        </div>
+      </div>
+    </form>
+    <!-- form#sign-up.border  -->
+    <br>
+    <form id="sign-in">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <input type="text" name="credentials[email]" id="user-email" class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+        </div>
+        <div class="form-group col-md-12">
+          <input type="submit" class="btn btn-info btn-md" value="Sign in">
+        </div>
+        </fieldset>
+    </form>
+
+    <!-- Doctors Modal -->
+    <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Doctors Information</h4>
           </div>
-            <div class="form-group col-md-12">
-            <input type="text" name="credentials[email]" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group col-md-12">
-            <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
-            </div>
-            <div class="form-group col-md-12">
-            <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation">
-            </div>
-            <div class="form-group col-md-12">
-            <input type="submit" class="btn btn-info btn-md" value="Sign up!">
+          <div class="modal-body">
+            <!-- display all doctors -->
+            <div id="content" class="content"></div>
           </div>
-        </form>
-        <!-- form#sign-up.border  -->
-        <br>
-        <form id="sign-in">
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <input type="text" name="credentials[email]" id="user-email" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group col-md-12">
-            <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-          <div class="form-group col-md-12">
-            <input type="submit" class="btn btn-info btn-md" value="Sign in">
+        </div>
+      </div>
+    </div>
+    <!-- Doctors Modal ends here-->
+    </div>
+
+
+    <div class="doctor-wrapper">
+      <div id="session-search" class="col-md-12">
+        <h2>See All Doctors</h2>
+        <form class="doctors" id="see-all-doctors">
+          <div class="form-group">
           </div>
-          </fieldset>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
         </form>
 
         <!-- Doctors Modal -->
-            <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Doctors Information</h4>
-                    </div>
-                    <div class="modal-body">
-                      <!-- display all doctors -->
-                      <div id="content" class="content"></div>             
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div> <!-- Doctors Modal ends here-->
-            <br />
-            <br />
-      </div>
-
-      
-      <div class="doctor-wrapper">
-        <div id="session-search" class="col-md-12">
-            <h2>See All Doctors</h2>
-            <form class="doctors" id="see-all-doctors">
-              <div class="form-group">
+        <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Doctors Information</h4>
               </div>
-              <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
-            </form>
-            
-            <!-- Doctors Modal -->
-            <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Doctors Information</h4>
-                    </div>
-                    <div class="modal-body">
-                      <!-- display all doctors -->
-                      <div id="content" class="content"></div>             
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div> <!-- Doctors Modal ends here-->
-            <br />
-            <br />
-            <h2>Get One Doctor</h2>
-            <form class="doctors" id="search-one-doctor">
-              <div class="form-group">
-                <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
+              <div class="modal-body">
+                <!-- display all doctors -->
+                <div id="content" class="content"></div>
               </div>
-              <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
-            </form>      
-            <br />
-            <br />
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Doctors Modal ends here-->
+        <br />
+        <br />
+        <h2>Get One Doctor</h2>
+        <form class="doctors" id="search-one-doctor">
+          <div class="form-group">
+            <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
+          </div>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
+        </form>
+        <br />
+        <br />
 
-          <h2>Add One Doctor</h2>
-          <form class="border" id="create-doctors">
-            <fieldset>
-              <input type="text" name="doctor[first_name]" class="search_doctor form-control" placeholder="First Name">
-              <br>
-              <input type="text" name="doctor[last_name]" class="search_doctor form-control" placeholder="Last Name">
-              <br>
-              <input type="text" name="doctor[clinic_affiliation]" class="search_doctor form-control" placeholder="Clinic Affiliation">
-              <br>
-              <input type="text" name="doctor[phone_number]" class="search_doctor form-control" placeholder="Main Phone Number">
-              <br>
-              <input type="text" name="doctor[sub_specialty_english]" class="search_doctor form-control" placeholder="SubSpecialty: English">
-              <br>
-              <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor form-control" placeholder="SubSpecialty: Spanish">
-              <br>
-              <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">
-            </fieldset>
-          </form>
-          <br />
-          <br />
+        <h2>Add One Doctor</h2>
+        <form class="border" id="create-doctors">
+          <fieldset>
+            <input type="text" name="doctor[first_name]" class="search_doctor form-control" placeholder="First Name">
+            <br>
+            <input type="text" name="doctor[last_name]" class="search_doctor form-control" placeholder="Last Name">
+            <br>
+            <input type="text" name="doctor[clinic_affiliation]" class="search_doctor form-control" placeholder="Clinic Affiliation">
+            <br>
+            <input type="text" name="doctor[phone_number]" class="search_doctor form-control" placeholder="Main Phone Number">
+            <br>
+            <input type="text" name="doctor[sub_specialty_english]" class="search_doctor form-control" placeholder="SubSpecialty: English">
+            <br>
+            <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor form-control" placeholder="SubSpecialty: Spanish">
+            <br>
+            <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">
+          </fieldset>
+        </form>
+        <br />
+        <br />
 
-          <h2>Update One Doctor</h2>
-          <form class="doctors" id="doctor-update">
+        <h2>Update One Doctor</h2>
+        <form class="doctors" id="doctor-update">
           <div class="form-group">
             <input type="text" name="doctor[id]" class="search_doctor form-control" placeholder="Resource ID Here">
             <br>
@@ -190,61 +192,62 @@
         </form>
 
         <h2>Delete One Doctor</h2>
-      <form class="doctors" id="delete-one-doctor">
-        <div class="form-group">
-          <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
-        </div>
-        <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Delete Doctor Profile</button>
-      </form>
-        </div>
-        <div>
-
-        
-
-      <div class="session-notes-wrapper"   >
-        <div id="session-container" class="col-md-8" style="display: none">
-          <div class="session">
-
+        <form class="doctors" id="delete-one-doctor">
+          <div class="form-group">
+            <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
           </div>
-        </div>
-
-        <div id=""></div>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Delete Doctor Profile</button>
+        </form>
       </div>
+      <div>
 
 
 
-          <!-- Create  the modals for changing password->
-          <!-- Change Password Modal -->
-          <div class="modal fade" id="changePwdModal" role="dialog">
-            <div class="modal-dialog">
+        <div class="session-notes-wrapper">
+          <div id="session-container" class="col-md-8" style="display: none">
+            <div class="session">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Change Password</h4>
-                </div>
-                <div class="modal-body">
-                  <!-- form#change-pwd.border  -->
-                  <form class="border" id="change-password">
-                    <fieldset>
-                      <legend>Change Password</legend>
-                      <input type="password" name="passwords[old]" placeholder="Old-Password">
-                      <input type="password" name="passwords[new]" placeholder="New-Password">
-                      <input type="submit" value="Change Password">
-                    </fieldset>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
             </div>
           </div>
 
-          <!-- Change Password Modal ends here-->
+          <div id=""></div>
         </div>
+
+
+
+        <!-- Create  the modals for changing password->
+          <!-- Change Password Modal -->
+        <div class="modal fade" id="changePwdModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change Password</h4>
+              </div>
+              <div class="modal-body">
+                <!-- form#change-pwd.border  -->
+                <form class="border" id="change-password">
+                  <fieldset>
+                    <legend>Change Password</legend>
+                    <input type="password" name="passwords[old]" placeholder="Old-Password">
+                    <input type="password" name="passwords[new]" placeholder="New-Password">
+                    <input type="submit" value="Change Password">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Change Password Modal ends here-->
       </div>
-      <!-- wrapper div ends here -->
-    </body>
+    </div>
+    <!-- wrapper div ends here -->
+</body>
+
 </html>
