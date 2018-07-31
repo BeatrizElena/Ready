@@ -8,10 +8,10 @@ const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('sign up ran!')
+  // console.log('sign up ran!')
 
   const data = getFormFields(this)
-  console.log(data) // for testing what 'this' is in parameter above
+  // console.log(data) // for testing what 'this' is in parameter above
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -19,10 +19,10 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('sign in ran!')
+  // console.log('sign in ran!')
 
   const data = getFormFields(this)
-  console.log(data) // for testing what 'this' is in parameter above
+  // console.log(data) // for testing what 'this' is in parameter above
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
