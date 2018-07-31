@@ -59,15 +59,12 @@ const onUpdateDoctor = function (event) {
 const onDeleteDoctor = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   const doctor = data.doctor
-  if (doctor.id.length !== 0) {
     api.destroyDoctors(doctor.id)
       .then(ui.onDeleteSuccess)
       .catch(ui.onError)
-  } else {
-    console.log('Please provide a doctor id!')
   }
-}
 
 
 // TO-DO: create session with notes and all doctors fields from one record
