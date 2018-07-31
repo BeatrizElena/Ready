@@ -22,6 +22,8 @@ const signInSuccess = function (data) {
   $('.doctor-wrapper').fadeIn()
   $('#session-search').fadeIn()
   $('.dropdown').show()
+  // $('.dropdown-menu').fadeIn()
+
   // console.log('signInSuccess ran. store.user is: ')
   // console.log(store.user)
 }
