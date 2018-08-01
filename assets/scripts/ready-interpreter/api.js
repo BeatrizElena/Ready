@@ -3,13 +3,6 @@
 const config = require('../config')
 const store = require('../store')
 
-const indexDoctors = function () {
-  return $.ajax({
-    url: config.apiUrl + '/doctors',
-    method: 'GET'
-  })
-}
-
 const indexSessions = function () {
   return $.ajax({
     // debugger
@@ -68,7 +61,6 @@ const createSession = function (data) {
 }
 
 module.exports = {
-  indexDoctors,
   indexSessions,
   showDoctor,
   destroyDoctors,

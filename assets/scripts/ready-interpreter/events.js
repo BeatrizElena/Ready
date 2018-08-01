@@ -5,9 +5,9 @@ const ui = require('./ui')
 const getFormFields = require(`../../../lib/get-form-fields`)
 // const logic = require('./logic-game')
 
-const onGetDoctors = function (event) {
+const onGetSessions = function (event) {
   event.preventDefault()
-  api.indexDoctors()
+  api.indexSessions()
     .then(ui.onSuccess)
     .catch(ui.onError)
 }
@@ -93,7 +93,7 @@ const onDeleteDoctor = function (event) {
 // }
 
 const addHandlers = () => {
-  $('#see-all-doctors').on('click', onGetDoctors)
+  $('#see-all-doctors').on('click', onGetSessions)
   $('#search-one-doctor').on('submit', onGetOneDoctor)
   $('#create-doctors').on('submit', onCreateDoctor)
   $('#create-sessions').on('submit', onCreateSession)

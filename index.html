@@ -91,20 +91,20 @@
 
     <div class="doctor-wrapper">
       <div id="session-search" class="col-md-12">
-        <h2>See All Doctors</h2>
+        <h2>See All Sessions</h2>
         <form class="doctors" id="see-all-doctors">
           <div class="form-group">
           </div>
-          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See All Sessions</button>
         </form>
 
 
-        <h2>Get One Doctor</h2>
+        <h2>See One Session</h2>
         <form class="doctors" id="search-one-doctor">
           <div class="form-group">
-            <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
+            <input type="text" name="session[id]" class="form-control" placeholder="Session ID Here">
           </div>
-          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeOneDoctorsModal">See One Doctor Profile</button>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeOneSessionModal">See One Session</button>
         </form>
         <br />
  
@@ -167,17 +167,17 @@
 
 
 
-    <!-- All Doctors Modal -->
+    <!-- All Sessions Modal -->
     <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Doctors Information</h4>
+            <h4 class="modal-title">All Sessions</h4>
           </div>
           <div class="modal-body">
-            <!-- display all doctors -->
+            <!-- display all sessions -->
             <div id="content" class="content"></div>
           </div>
           <div class="modal-footer">
@@ -186,21 +186,21 @@
         </div>
       </div>
     </div>
-    <!-- All Doctors Modal ends here-->
+    <!-- All Sessions Modal ends here-->
 
 
-    <!-- One Doctors Modal -->
-    <div class="modal fade" id="seeOneDoctorsModal" role="dialog">
+    <!-- One Session Modal -->
+    <div class="modal fade" id="seeOneSessionModal" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Doctor Information</h4>
+            <h4 class="modal-title">Session Information</h4>
           </div>
           <div class="modal-body">
-            <!-- display all doctors -->
-            <div id="content" class="content"></div>
+            <!-- display one session -->
+            <div id="one-session-content" class="content"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -208,7 +208,7 @@
         </div>
       </div>
     </div>
-    <!-- Doctors Modal ends here-->
+    <!-- One Session Modal ends here-->
 
 
     <!-- Session Modal -->
@@ -272,3 +272,29 @@
 </body>
 
 </html>
+
+
+
+
+
+
+<!-- One Doctors Modal -->
+<!-- <div class="modal fade" id="seeOneDoctorsModal" role="dialog">
+  <div class="modal-dialog"> -->
+    <!-- Modal content-->
+    <!-- <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Doctor Information</h4>
+      </div>
+      <div class="modal-body"> -->
+        <!-- display all doctors -->
+        <!-- <div id="content" class="content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Doctors Modal ends here-->
