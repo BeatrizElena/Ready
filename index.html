@@ -98,58 +98,29 @@
           <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">Get List of All Doctors</button>
         </form>
 
-        <!-- Doctors Modal -->
-        <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
-          <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Doctors Information</h4>
-              </div>
-              <div class="modal-body">
-                <!-- display all doctors -->
-                <div id="content" class="content"></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Doctors Modal ends here-->
-        <br />
-        <br />
+
         <h2>Get One Doctor</h2>
         <form class="doctors" id="search-one-doctor">
           <div class="form-group">
             <input type="text" name="doctor[id]" class="form-control" placeholder="Doctor ID Here">
           </div>
-          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal">See One Doctor Profile</button>
+          <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeOneDoctorsModal">See One Doctor Profile</button>
         </form>
         <br />
-        <br />
+ 
 
-        <h2>Add A Note to your Session</h2>
-        <form class="border" id="create-doctors">
-          <fieldset>
-            <input type="text" name="doctor[id]" class="search_doctor form-control" placeholder="Doctor Id">
+        <h2>Add A Session</h2>
+        <form class="border" id="create-sessions">
+            <input type="text" name="session[doctor_id]" class="search_doctor form-control" placeholder="Doctor Id">
             <br>
             <input type="textarea" name="session[notes]" class="search_doctor form-control" placeholder="Notes">
             <br>
-            <!-- <input type="text" name="doctor[clinic_affiliation]" class="search_doctor form-control" placeholder="Clinic Affiliation">
-              <br>
-              <input type="text" name="doctor[phone_number]" class="search_doctor form-control" placeholder="Main Phone Number">
-              <br>
-              <input type="text" name="doctor[sub_specialty_english]" class="search_doctor form-control" placeholder="SubSpecialty: English">
-              <br>
-              <input type="text" name="doctor[sub_specialty_spanish]" class="search_doctor form-control" placeholder="SubSpecialty: Spanish">
-              <br>
-              <input type="submit" id="create-profile" value="Create Profile" class="btn btn-info btn-sm" data-toggle="modal" data-target="#seeAllDoctorsModal"> -->
-          </fieldset>
+            <input type="date" name="session[date]" class="search_doctor form-control" >
+            <input type="time" name="session[time]" class="search_doctor form-control">
+            <button type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#sessionModal">Submit</button>
         </form>
         <br />
-        <br />
+
 
         <h2>Update One Doctor</h2>
         <form class="doctors" id="doctor-update">
@@ -192,6 +163,76 @@
 
           <div id=""></div>
         </div>
+
+
+
+
+    <!-- All Doctors Modal -->
+    <div class="modal fade" id="seeAllDoctorsModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Doctors Information</h4>
+          </div>
+          <div class="modal-body">
+            <!-- display all doctors -->
+            <div id="content" class="content"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- All Doctors Modal ends here-->
+
+
+    <!-- One Doctors Modal -->
+    <div class="modal fade" id="seeOneDoctorsModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Doctor Information</h4>
+          </div>
+          <div class="modal-body">
+            <!-- display all doctors -->
+            <div id="content" class="content"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Doctors Modal ends here-->
+
+
+    <!-- Session Modal -->
+    <div class="modal fade" id="sessionModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Session Information</h4>
+          </div>
+          <div class="modal-body">
+            <!-- display all doctors -->
+            <div id="session-content" class="content"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Session Modal ends here-->
+
+
 
 
 

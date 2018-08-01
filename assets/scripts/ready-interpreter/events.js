@@ -38,6 +38,23 @@ const onCreateDoctor = function (event) {
     .catch(ui.onError)
 }
 
+const onCreateSession = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  data.session.date_time = `${data.session.date} ${data.session.time}`
+  delete data.session.date
+  delete data.session.time
+  console.log(data)
+  if ((data.session.doctor_id === '') || data.session.notes === '' || data.session.date_time === '') {
+    $('#content').html('<p>Please complete all fields</p>')
+    $('#content').css('background-color', 'red')
+    return false
+  }
+  api.createSession(data)
+    .then(ui.onCreateSuccess)
+    .catch(ui.onError)
+}
+
 const onUpdateDoctor = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -79,6 +96,7 @@ const addHandlers = () => {
   $('#see-all-doctors').on('click', onGetDoctors)
   $('#search-one-doctor').on('submit', onGetOneDoctor)
   $('#create-doctors').on('submit', onCreateDoctor)
+  $('#create-sessions').on('submit', onCreateSession)
   $('#doctor-update').on('submit', onUpdateDoctor)
   $('#delete-one-doctor').on('submit', onDeleteDoctor)
 }

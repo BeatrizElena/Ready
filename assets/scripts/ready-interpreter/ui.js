@@ -40,6 +40,8 @@ const onGetOneDoctorSuccess = function(data) {
     $('#content').html(`Please enter a valid id`)
   } else {
     $('#content').html('')
+    // trying to clear see all doctors modal with line beow-not working yet!
+    $('#seeAllDoctorsModal').html('')
   const oneDoctorHTML = (`
     <p>ID: ${data.doctor.id}</p>
     <h4>Dr. ${data.doctor.first_name} ${data.doctor.last_name},  ${data.doctor.clinic_affiliation},  Main Phone:  ${data.doctor.phone_number}</h4>
@@ -80,17 +82,35 @@ const onUpdateSuccess = function (data) {
 
 const onCreateSuccess = function (data) {
   // console.log('You successfully created a doctor!')
-  store.doctor = data.doctor
-  $('#content').html('')
-  const createDoctorHTML = (`
-    <p>ID: ${store.doctor.id}</p>
-    <h4>Dr. ${store.doctor.first_name} ${store.doctor.last_name},  ${store.doctor.clinic_affiliation},  Main Phone:  ${store.doctor.phone_number}</h4>
-    <p>Sub-Specialty - English: ${store.doctor.sub_specialty_english}</p>
-    <p>Sub-Specialty - Spanish: ${store.doctor.sub_specialty_spanish}</p>
-    <br>
+  store.session = data.session
+  // console.log(data)
+  $('#session-content').html('')
+  const createSessionHTML = (`
+    <p>Date: ${store.session.date_time}</p>
+    <p>Session ID: ${store.session.id}, Doctor ID: ${store.session.doctor_id}</p>
+    <h5>${store.session.doctor.first_name} ${store.session.doctor.last_name}, ${store.session.doctor.clinic_affiliation}</h5>
+    <h6>Phone Number: ${store.session.doctor.phone_number}</h6>
+    <p>${store.session.doctor.sub_specialty_english}</p>
+    <p>${store.session.doctor.sub_specialty_spanish}</p>
+    <h6>My Notes</h6>
+    <p>${store.session.notes}</p>
   `)
-  $('#content').append(createDoctorHTML)
+  $('#session-content').append(createSessionHTML)
 }
+
+// const onCreateSuccess = function (data) {
+//   // console.log('You successfully created a doctor!')
+//   store.doctor = data.doctor
+//   $('#content').html('')
+//   const createDoctorHTML = (`
+//     <p>ID: ${store.doctor.id}</p>
+//     <h4>Dr. ${store.doctor.first_name} ${store.doctor.last_name},  ${store.doctor.clinic_affiliation},  Main Phone:  ${store.doctor.phone_number}</h4>
+//     <p>Sub-Specialty - English: ${store.doctor.sub_specialty_english}</p>
+//     <p>Sub-Specialty - Spanish: ${store.doctor.sub_specialty_spanish}</p>
+//     <br>
+//   `)
+//   $('#content').append(createDoctorHTML)
+// }
 
 module.exports = {
   onSuccess,

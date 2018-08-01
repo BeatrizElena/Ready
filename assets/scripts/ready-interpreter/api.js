@@ -56,13 +56,25 @@ const createDoctor = function (data) {
   });
 }
 
+const createSession = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/sessions',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  });
+}
+
 module.exports = {
   indexDoctors,
   indexSessions,
   showDoctor,
   destroyDoctors,
   updateDoctor,
-  createDoctor
+  createDoctor,
+  createSession
 }
 
 
