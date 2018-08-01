@@ -12,16 +12,16 @@ const onGetSessions = function (event) {
     .catch(ui.onError)
 }
 
-const onGetOneDoctor = function (event) {
+const onGetOneSession = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const doctor = data.doctor
-  if (doctor.id.length !== 0) {
-    api.showDoctor(doctor.id)
-      .then(ui.onGetOneDoctorSuccess)
+  const session = data.session
+  if (session.id.length !== 0) {
+    api.showSession(session.id)
+      .then(ui.onGetOneSessionSuccess)
       .catch(ui.onError)
   } else {
-    console.log('Please provide a doctor id!')
+    $('#one-session-content').html('<p>Please provide a session id!</p>')
   }
 }
 
@@ -94,7 +94,7 @@ const onDeleteDoctor = function (event) {
 
 const addHandlers = () => {
   $('#see-all-doctors').on('click', onGetSessions)
-  $('#search-one-doctor').on('submit', onGetOneDoctor)
+  $('#search-one-doctor').on('submit', onGetOneSession)
   $('#create-doctors').on('submit', onCreateDoctor)
   $('#create-sessions').on('submit', onCreateSession)
   $('#doctor-update').on('submit', onUpdateDoctor)

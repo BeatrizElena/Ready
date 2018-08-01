@@ -42,13 +42,11 @@ const onGetOneSessionSuccess = function(data) {
     $('#one-session-content').html(`Please enter a valid id`)
   } else {
     $('#one-session-content').html('')
-    // trying to clear see all doctors modal with line beow-not working yet!
-    $('#seeOneSessionModal').html('')
   const oneSessionHTML = (`
     <p>ID: ${data.session.id}</p>
     <p>Date: ${data.session.date_time}</p>
     <p>Session ID: ${data.session.id}, Doctor ID: ${data.session.doctor_id}</p>
-    <h5>${data.session.doctor.first_name} ${data.session.doctor.last_name}, ${sdata.session.doctor.clinic_affiliation}</h5>
+    <h5>${data.session.doctor.first_name} ${data.session.doctor.last_name}, ${data.session.doctor.clinic_affiliation}</h5>
     <h6>Phone Number: ${data.session.doctor.phone_number}</h6>
     <p>${data.session.doctor.sub_specialty_english}</p>
     <p>${data.session.doctor.sub_specialty_spanish}</p>
