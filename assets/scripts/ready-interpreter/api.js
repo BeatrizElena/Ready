@@ -17,9 +17,9 @@ const showSession = function (id) {
   })
 }
 
-const destroyDoctors = function (id) {
+const destroySession = function (id) {
   return $.ajax({
-    url: config.apiUrl + '/doctors/' + id,
+    url: config.apiUrl + '/sessions/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -63,7 +63,7 @@ const createSession = function (data) {
 module.exports = {
   indexSessions,
   showSession,
-  destroyDoctors,
+  destroySession,
   updateDoctor,
   createDoctor,
   createSession

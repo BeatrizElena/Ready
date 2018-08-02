@@ -73,15 +73,18 @@ const onUpdateDoctor = function (event) {
   }
 }
 
-const onDeleteDoctor = function (event) {
+const onDeleteSession = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
-  const doctor = data.doctor
-    api.destroyDoctors(doctor.id)
+  const session = data.session
+  if (session.id.length !== 0) {
+    api.destroySession(session.id)
       .then(ui.onDeleteSuccess)
       .catch(ui.onError)
+  } else {
+    $('#one-session-content').html('<p>Please provide a session id!</p>')
   }
+}
 
 
 // TO-DO: create session with notes and all doctors fields from one record
@@ -98,7 +101,7 @@ const addHandlers = () => {
   $('#create-doctors').on('submit', onCreateDoctor)
   $('#create-sessions').on('submit', onCreateSession)
   $('#doctor-update').on('submit', onUpdateDoctor)
-  $('#delete-one-doctor').on('submit', onDeleteDoctor)
+  $('#delete-one-doctor').on('submit', onDeleteSession)
 }
 
 module.exports = {

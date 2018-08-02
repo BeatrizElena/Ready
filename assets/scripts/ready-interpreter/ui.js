@@ -65,8 +65,8 @@ const onError = function (response) {
 
 
 const onDeleteSuccess = function () {
-  $('#content').html('')
-  $('#content').html(`Doctor's profile was successfully deleted`)
+  $('#one-session-content').html('')
+  $('#one-session-content').html('<p>Session was successfully deleted</p>')
 }
 
 const onUpdateSuccess = function (data) {
