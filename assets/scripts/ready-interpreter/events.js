@@ -2,26 +2,38 @@
 
 const api = require('./api')
 const ui = require('./ui')
+// const store = require('../store')
 const getFormFields = require(`../../../lib/get-form-fields`)
 // const logic = require('./logic-game')
 
 const onGetSessions = function (event) {
   event.preventDefault()
   api.indexSessions()
-    .then(ui.onSuccess)
-    .catch(ui.onError)
+    .then(ui.onGetAllSessionsSuccess)
+    .then(ui.onShowSuccess)
+    .catch(ui.onShowError)
 }
 
 const onGetOneSession = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const session = data.session
+
+  for(let key in data.session) {
+    if (key !== 'id') {
+      delete data.session[key]
+      api.showSession()
+      .catch(ui.onShowError)
+    }
+ }
+
   if (session.id.length !== 0) {
     api.showSession(session.id)
       .then(ui.onGetOneSessionSuccess)
-      .catch(ui.onError)
+      .then(ui.onShowSuccess)
+      .catch(ui.onShowError)
   } else {
-    $('#one-session-content').html('<p>Please provide a session id!</p>')
+    $('#one-session-content').html('<p>Please provide a valid session id!</p>')
   }
 }
 
@@ -35,7 +47,8 @@ const onCreateDoctor = function (event) {
   }
   api.createDoctor(data)
     .then(ui.onCreateSuccess)
-    .catch(ui.onError)
+    .then(ui.onShowSuccess)
+    .catch(ui.onShowError)
 }
 
 const onCreateSession = function (event) {
@@ -46,30 +59,41 @@ const onCreateSession = function (event) {
   delete data.session.time
   console.log(data)
   if ((data.session.doctor_id === '') || data.session.notes === '' || data.session.date_time === '') {
-    $('#content').html('<p>Please complete all fields</p>')
-    $('#content').css('background-color', 'red')
+    $('#add-session-content').html('<p>Please complete all fields</p>')
+    $('#add-session-content').css('background-color', 'red')
     return false
   }
   api.createSession(data)
     .then(ui.onCreateSuccess)
-    .catch(ui.onError)
+    .then(ui.onShowSuccess)
+    .catch(ui.onShowError)
 }
 
-const onUpdateDoctor = function (event) {
+const onUpdateSession = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const doctor = data.doctor
-  if (doctor.id === '') {
-    $('#content').html('<p>Id is required</p>')
-    $('#content').css('background-color', 'red')
+  data.session.date_time = `${data.session.date} ${data.session.time}`
+  delete data.session.date
+  delete data.session.time
+  const session = data.session
+
+  for(let key in data.session) {
+     if (data.session[key].trim().length == 0 && key !== 'id') {
+       delete data.session[key]
+     }
+  }
+   
+         
+  if (session.id === '') {
+    $('#update-one-session-content').html('<p>Session Id is required</p>')
+    $('#update-one-session-content').css('background-color', 'red')
     return false
   }
-  if (doctor.id.length !== 0) {
-    api.updateDoctor(data)
+  if (session.id.length !== 0) {
+    api.updateSession(data)
       .then(ui.onUpdateSuccess)
-      .catch(ui.onError)
-  } else {
-    console.log('Please provide a doctor id!')
+      .then(ui.onShowSuccess)
+      .catch(ui.onShowError)
   }
 }
 
@@ -80,7 +104,7 @@ const onDeleteSession = function (event) {
   if (session.id.length !== 0) {
     api.destroySession(session.id)
       .then(ui.onDeleteSuccess)
-      .catch(ui.onError)
+      .catch(ui.onDeleteError)
   } else {
     $('#one-session-content').html('<p>Please provide a session id!</p>')
   }
@@ -100,7 +124,7 @@ const addHandlers = () => {
   $('#search-one-doctor').on('submit', onGetOneSession)
   $('#create-doctors').on('submit', onCreateDoctor)
   $('#create-sessions').on('submit', onCreateSession)
-  $('#doctor-update').on('submit', onUpdateDoctor)
+  $('#doctor-update').on('submit', onUpdateSession)
   $('#delete-one-doctor').on('submit', onDeleteSession)
 }
 

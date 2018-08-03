@@ -27,26 +27,15 @@ const destroySession = function (id) {
   })
 }
 
-const updateDoctor = function (data) {
+const updateSession = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/doctors/' + data.doctor.id,
+    url: config.apiUrl + '/sessions/' + data.session.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data
   })
-}
-
-const createDoctor = function (data) {
-  return $.ajax({
-    url: config.apiUrl + '/doctors',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  });
 }
 
 const createSession = function (data) {
@@ -64,8 +53,7 @@ module.exports = {
   indexSessions,
   showSession,
   destroySession,
-  updateDoctor,
-  createDoctor,
+  updateSession,
   createSession
 }
 
@@ -86,18 +74,7 @@ module.exports = {
 //     }
 //   });
 // }
-// const getSessionById = function (id) {
-//   return $.ajax({
-//     // debugger
-//     url: config.apiUrl + '/sessions/' + id,
-//     method: 'GET',
-//     contentType: "application/json",
-//     dataType: "json",
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   });
-// }
+
 
 
 

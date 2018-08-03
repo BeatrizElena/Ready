@@ -4,44 +4,33 @@ const store = require('../store')
 
 // const showDoctorsTemplate = require('../templates/ready-interpreter.handlebars')
 
-const onSuccess = function (data) {
-  $('#content').html('')
+const onGetAllSessionsSuccess = function (data) {
+  $('#see-all-content').html('')
   // console.log('data is ', data)
-  // console.log('data.sessions is ', data.sessions)
+  // data returns all sessions created by any user
   if (!data) {
-    $('#content').html('Either you deleted something, or something went wrong')
-  } else if (data.session) {
-    // console.log(data.doctor)
+    $('#see-all-content').html('Either you deleted something, or something went wrong')
   } else {
-    // console.log(data.doctors)
-    store.session = data.session
-    // console.log(store)
-
-      // clear content div, in case something is already there
-  $('#content').html('')
-
-  data.sessions.forEach(session => {
-    const sessionHTML = (`
-      <p>Session ID: ${session.id}</p>
-      <h4>Dr. ${session.doctor.first_name} ${session.doctor.last_name},  ${session.doctor.clinic_affiliation},  Main Phone:  ${session.doctor.phone_number}</h4>
-      <p>Sub-Specialty - English: ${session.doctor.sub_specialty_english}</p>
-      <p>Sub-Specialty - Spanish: ${session.doctor.sub_specialty_spanish}</p>
-      <h6>My Notes</h6>
-      <p>${session.notes}</p>
-      <br>
-    `)
-
-    $('#content').append(sessionHTML)
+    data
+    // clear content div, in case something is already there
+    $('#see-all-content').html('')
+    data.sessions.forEach(session => {
+      const sessionHTML = (`
+        <p>Session ID: ${session.id}, Doctor ID: ${session.doctor.id}</p>
+        <h4>Dr. ${session.doctor.first_name} ${session.doctor.last_name},  ${session.doctor.clinic_affiliation},  Main Phone:  ${session.doctor.phone_number}</h4>
+        <p>Sub-Specialty - English: ${session.doctor.sub_specialty_english}</p>
+        <p>Sub-Specialty - Spanish: ${session.doctor.sub_specialty_spanish}</p>
+        <h6>My Notes</h6>
+        <p>${session.notes}</p>
+        <br>
+      `)
+      $('#see-all-content').append(sessionHTML)
   })
   }
 }
 
 const onGetOneSessionSuccess = function(data) {
-  if (!data.session.id){
-    $('#one-session-content').html('')
-    $('#one-session-content').html(`Please enter a valid id`)
-  } else {
-    $('#one-session-content').html('')
+  $('#one-session-content').html('')
   const oneSessionHTML = (`
     <p>ID: ${data.session.id}</p>
     <p>Date: ${data.session.date_time}</p>
@@ -54,40 +43,44 @@ const onGetOneSessionSuccess = function(data) {
     <p>${data.session.notes}</p>
   `)
   $('#one-session-content').append(oneSessionHTML)
-}
-}
+  // empty values from form fields
+  $("input[type=text], input[type=date], input[type=time], textarea").val("")
 
-const onError = function (response) {
-  // console.error(response)
-  $('#content').html('')
-  $('#content').html(`${response}`)
 }
 
 
 const onDeleteSuccess = function () {
-  $('#one-session-content').html('')
-  $('#one-session-content').html('<p>Session was successfully deleted</p>')
-}
+    $('#delete-content').html('<p>Session was successfully deleted</p>')
+  // empty values from form fields
+  $("input[type=text], textarea").val("")
+  }
+
+  const onDeleteError = function () {
+    $('#delete-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid id.</p>')
+  // empty values from form fields
+  $("input[type=text], textarea").val("")
+  }
 
 const onUpdateSuccess = function (data) {
   // console.log('You successfully updated the doctor!')
-  store.doctor = data.doctor
-  $('#content').html('')
-  const updateDoctorHTML = (`
-    <p>ID: ${store.doctor.id}</p>
-    <h4>Dr. ${store.doctor.first_name} ${store.doctor.last_name},  ${store.doctor.clinic_affiliation},  Main Phone:  ${store.doctor.phone_number}</h4>
-    <p>Sub-Specialty - English: ${store.doctor.sub_specialty_english}</p>
-    <p>Sub-Specialty - Spanish: ${store.doctor.sub_specialty_spanish}</p>
+  store.session = data.session
+  $('#update-one-session-content').html('')
+  const updateSessionHTML = (`
+    <p>Session ID: ${store.session.id}, Doctor ID: ${store.session.doctor.id}</p>
+    <h4>Dr. ${store.session.doctor.first_name} ${store.session.doctor.last_name},  ${store.session.doctor.clinic_affiliation},  Main Phone:  ${store.session.doctor.phone_number}</h4>
+    <p>Sub-Specialty - English: ${store.session.doctor.sub_specialty_english}</p>
+    <p>Sub-Specialty - Spanish: ${store.session.doctor.sub_specialty_spanish}</p>
+    <p>Notes: ${store.session.notes}</p>
     <br>
   `)
-  $('#content').append(updateDoctorHTML)
+  $('#update-one-session-content').append(updateSessionHTML)
 }
 
 const onCreateSuccess = function (data) {
   // console.log('You successfully created a doctor!')
   store.session = data.session
-  console.log(data)
-  $('#session-content').html('')
+  // console.log(data)
+  $('#add-session-content').html('')
   const createSessionHTML = (`
     <p>Date: ${store.session.date_time}</p>
     <p>Session ID: ${store.session.id}, Doctor ID: ${store.session.doctor_id}</p>
@@ -98,16 +91,38 @@ const onCreateSuccess = function (data) {
     <h6>My Notes</h6>
     <p>${store.session.notes}</p>
   `)
-  $('#session-content').append(createSessionHTML)
+  $('#add-session-content').append(createSessionHTML)
+  // empty values from form fields
+  $("input[type=text], textarea").val("")
 }
 
 
+// const onShowError = e => {
+//   e.preventDefault()
+//   returnMsgError.removeClass()
+//   returnMsgError.addClass('error')
+//   setTimeout(() => {
+//      returnMsgError.removeClass()
+//   }, 3000)
+// }
+
+// const onShowSuccess = e => {
+//   e.preventDefault()
+//   returnMsgSuccess.removeClass()
+//   returnMsgSuccess.addClass('success')
+//   setTimeout(() => {
+//      returnMsgSuccess.removeClass()
+//   }, 3000)
+// }
+
 
 module.exports = {
-  onSuccess,
+  onGetAllSessionsSuccess,
   onGetOneSessionSuccess,
-  onError,
   onDeleteSuccess,
+  onDeleteError,
   onUpdateSuccess,
   onCreateSuccess
+  // onShowError,
+  // onShowSuccess
 }
