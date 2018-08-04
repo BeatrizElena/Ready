@@ -64,14 +64,12 @@ const onCreateSession = function (event) {
   delete data.session.date
   delete data.session.time
   console.log(data)
-  if ((data.session.doctor_id === '') || data.session.notes === '' || data.session.date_time === '') {
-    ui.onCreateError
-    return false
-  }
-  api.createSession(data)
+  if (!(data.session.doctor_id === '') || !(data.session.notes === '') || !(data.session.date_time === '')) {
+    api.createSession(data)
     .then(ui.onCreateSuccess)
     .then(ui.onShowSuccess)
     .catch(ui.onCreateError)
+  }
 }
 
 const onUpdateSession = function (event) {
