@@ -65,8 +65,7 @@ const onCreateSession = function (event) {
   delete data.session.time
   console.log(data)
   if ((data.session.doctor_id === '') || data.session.notes === '' || data.session.date_time === '') {
-    $('#add-session-content').html('<p>Please complete all fields</p>')
-    $('#add-session-content').css('background-color', 'red')
+    ui.onCreateError
     return false
   }
   api.createSession(data)

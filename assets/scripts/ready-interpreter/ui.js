@@ -131,7 +131,7 @@ const onCreateSuccess = function (data) {
 }
 
 const onCreateError = function () {
-  $('#uadd-session-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid doctor id.</p>')
+  $('#add-session-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid doctor id. Also, please complete all fields.</p>')
 // empty values from form fields
 $("input[type=text], textarea").val("")
 }
