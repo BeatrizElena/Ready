@@ -10,6 +10,13 @@ const indexSessions = function () {
   });
 }
 
+const indexDoctors = function () {
+  return $.ajax({
+    // debugger
+    url: config.apiUrl + '/doctors/'
+  });
+}
+
 const showSession = function (id) {
   return $.ajax({
     url: config.apiUrl + '/sessions/' + id,
@@ -51,6 +58,7 @@ const createSession = function (data) {
 
 module.exports = {
   indexSessions,
+  indexDoctors,
   showSession,
   destroySession,
   updateSession,

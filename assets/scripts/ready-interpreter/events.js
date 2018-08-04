@@ -14,6 +14,14 @@ const onGetSessions = function (event) {
     .catch(ui.onShowError)
 }
 
+const onGetDoctors = function (event) {
+  event.preventDefault()
+  api.indexDoctors()
+    .then(ui.onGetAllDoctorsSuccess)
+    .then(ui.onShowSuccess)
+    .catch(ui.onShowError)
+}
+
 const onGetOneSession = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -121,6 +129,7 @@ const onDeleteSession = function (event) {
 
 const addHandlers = () => {
   $('#see-all-doctors').on('click', onGetSessions)
+  $('#see-all-doctors-2').on('click', onGetDoctors)
   $('#search-one-doctor').on('submit', onGetOneSession)
   $('#create-doctors').on('submit', onCreateDoctor)
   $('#create-sessions').on('submit', onCreateSession)

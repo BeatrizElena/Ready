@@ -29,6 +29,28 @@ const onGetAllSessionsSuccess = function (data) {
   }
 }
 
+const onGetAllDoctorsSuccess = function (data) {
+  $('#see-all-content').html('')
+  // console.log('data is ', data)
+  // data returns all sessions created by any user
+  if (!data) {
+    $('#see-all-content').html('Either you deleted something, or something went wrong')
+  } else {
+    data
+    // clear content div, in case something is already there
+    $('#see-all-content').html('')
+    data.doctors.forEach(doctor => {
+      const doctorHTML = (`
+        <p>Doctor ID: ${doctor.id}</p>
+        <h4>Dr. ${doctor.first_name} ${doctor.last_name},  ${doctor.clinic_affiliation},  Main Phone:  ${doctor.phone_number}</h4>
+        <p>Sub-Specialty - English: ${doctor.sub_specialty_english}</p>
+        <p>Sub-Specialty - Spanish: ${doctor.sub_specialty_spanish}</p>
+      `)
+      $('#see-all-content').append(doctorHTML)
+  })
+  }
+}
+
 const onGetOneSessionSuccess = function(data) {
   $('#one-session-content').html('')
   const oneSessionHTML = (`
@@ -118,6 +140,7 @@ const onCreateSuccess = function (data) {
 
 module.exports = {
   onGetAllSessionsSuccess,
+  onGetAllDoctorsSuccess,
   onGetOneSessionSuccess,
   onDeleteSuccess,
   onDeleteError,
