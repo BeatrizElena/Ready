@@ -72,7 +72,7 @@ const onCreateSession = function (event) {
   api.createSession(data)
     .then(ui.onCreateSuccess)
     .then(ui.onShowSuccess)
-    .catch(ui.onShowError)
+    .catch(ui.onCreateError)
 }
 
 const onUpdateSession = function (event) {

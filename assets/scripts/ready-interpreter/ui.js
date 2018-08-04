@@ -130,6 +130,12 @@ const onCreateSuccess = function (data) {
   $("input[type=text], textarea").val("")
 }
 
+const onCreateError = function () {
+  $('#uadd-session-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid doctor id.</p>')
+// empty values from form fields
+$("input[type=text], textarea").val("")
+}
+
 
 // const onShowError = e => {
 //   e.preventDefault()
@@ -159,7 +165,8 @@ module.exports = {
   onDeleteError,
   onUpdateSuccess,
   onUpdateError,
-  onCreateSuccess
+  onCreateSuccess,
+  onCreateError
   // onShowError,
   // onShowSuccess
 }
