@@ -70,6 +70,12 @@ const onGetOneSessionSuccess = function(data) {
 
 }
 
+const onGetOneSessionError = function () {
+  $('#one-session-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid id.</p>')
+// empty values from form fields
+$("input[type=text], textarea").val("")
+}
+
 
 const onDeleteSuccess = function () {
     $('#delete-content').html('<p>Session was successfully deleted</p>')
@@ -96,6 +102,12 @@ const onUpdateSuccess = function (data) {
     <br>
   `)
   $('#update-one-session-content').append(updateSessionHTML)
+}
+
+const onUpdateError = function () {
+  $('#update-one-session-content').html('<p>Something went wrong. Perhaps you didn\'t enter a valid id.</p>')
+// empty values from form fields
+$("input[type=text], textarea").val("")
 }
 
 const onCreateSuccess = function (data) {
@@ -142,9 +154,11 @@ module.exports = {
   onGetAllSessionsSuccess,
   onGetAllDoctorsSuccess,
   onGetOneSessionSuccess,
+  onGetOneSessionError,
   onDeleteSuccess,
   onDeleteError,
   onUpdateSuccess,
+  onUpdateError,
   onCreateSuccess
   // onShowError,
   // onShowSuccess

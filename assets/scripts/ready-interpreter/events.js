@@ -31,7 +31,7 @@ const onGetOneSession = function (event) {
     if (key !== 'id') {
       delete data.session[key]
       api.showSession()
-      .catch(ui.onShowError)
+      .catch(ui.onGetOneSessionError)
     }
  }
 
@@ -39,9 +39,7 @@ const onGetOneSession = function (event) {
     api.showSession(session.id)
       .then(ui.onGetOneSessionSuccess)
       .then(ui.onShowSuccess)
-      .catch(ui.onShowError)
-  } else {
-    $('#one-session-content').html('<p>Please provide a valid session id!</p>')
+      .catch(ui.onGetOneSessionError)
   }
 }
 
@@ -88,7 +86,9 @@ const onUpdateSession = function (event) {
   for(let key in data.session) {
      if (data.session[key].trim().length == 0 && key !== 'id') {
        delete data.session[key]
-     }
+     } else {
+      ui.onUpdateError()
+    }
   }
    
          
